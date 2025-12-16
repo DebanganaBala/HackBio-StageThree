@@ -45,29 +45,29 @@ The full pipeline is implemented in a single Jupyter Notebook (.ipynb) using Sca
 
 For each sample independently:
 
-Filtered genes detected in fewer than 10 cells
+- Filtered genes detected in fewer than 10 cells
 
-Filtered cells with:
+- Filtered cells with:
 
-<200 detected genes
+      - <200 detected genes
 
-20% mitochondrial reads
+      - 20% mitochondrial reads
 
-Normalized total counts
+- Normalized total counts
 
-Log-transformed expression values
+- Log-transformed expression values
 
-Selected highly variable genes (HVGs)
+- Selected highly variable genes (HVGs)
 
 3. Per-Sample Clustering (Exploratory)
 
-PCA on HVGs
+- PCA on HVGs
 
-k-nearest neighbor graph
+- k-nearest neighbor graph
 
-UMAP embedding
+- UMAP embedding
 
-Leiden clustering
+- Leiden clustering
 
 This step verifies sample quality and structure before joint analysis.
 
@@ -75,47 +75,49 @@ This step verifies sample quality and structure before joint analysis.
 
 To match the reference paper:
 
-All samples were concatenated into a single AnnData object
+- All samples were concatenated into a single AnnData object
 
-HVGs recomputed across all stages
+- HVGs recomputed across all stages
 
-PCA → neighbors → UMAP → Leiden clustering performed jointly
+- PCA → neighbors → UMAP → Leiden clustering performed jointly
 
-Enables direct comparison across infection stages
+- Enables direct comparison across infection stages
 
 5. Cell Type Identification
 
 Clusters were annotated using canonical airway epithelial markers:
 
-Cell Type	Key Markers
-Basal	KRT5, TP63
-Club	SCGB1A1
-Ciliated	FOXJ1, TPPP3
-(Minor types visualized)	ENO2, CHGA, CHGB, POU2F3
+| Cell Type                | Key Markers              |
+| ------------------------ | ------------------------ |
+| Basal                    | KRT5, TP63               |
+| Club                     | SCGB1A1                  |
+| Ciliated                 | FOXJ1, TPPP3             |
+| (Minor types visualized) | ENO2, CHGA, CHGB, POU2F3 |
+
 
 Marker expression was visualized on UMAPs and clusters were assigned cell types based on dominant marker scores.
 
 6. ACE2 and ENO2 Analysis
 
-Visualized ACE2 and ENO2 expression on joint UMAPs
+- Visualized ACE2 and ENO2 expression on joint UMAPs
 
-Computed:
+- Computed:
 
-Mean ACE2 expression per cluster
+    - Mean ACE2 expression per cluster
 
-Percentage of ACE2-positive cells
+    - Percentage of ACE2-positive cells
 
-Focused analysis on 3 dpi to assess infection relevance
+- Focused analysis on 3 dpi to assess infection relevance
 
 7. Trajectory & Pseudotime Analysis
 
-Diffusion Map and Diffusion Pseudotime (DPT)
+- Diffusion Map and Diffusion Pseudotime (DPT)
 
-Basal cells used as the root population
+- Basal cells used as the root population
 
-Revealed a differentiation trajectory:
+- Revealed a differentiation trajectory:
 
-Basal → Club → Ciliated
+***Basal → Club → Ciliated***
 
 This mirrors epithelial differentiation and infection-associated remodeling reported in the paper.
 
@@ -123,12 +125,11 @@ This mirrors epithelial differentiation and infection-associated remodeling repo
 1. What cell types were identified at different stages of infection?
 
 Three major epithelial cell types were identified:
+- **Basal cells**
 
-Basal cells
+- **Club cells**
 
-Club cells
-
-Ciliated cells
+- **Ciliated cells**
 
 Their relative distributions shift across infection stages, with increased differentiation toward ciliated states at later time points.
 
@@ -136,11 +137,11 @@ Their relative distributions shift across infection stages, with increased diffe
 
 SARS-CoV-2 primarily targets airway epithelial cells. Infection perturbs:
 
-Differentiation programs
+- Differentiation programs
 
-Secretory and regenerative responses
+- Secretory and regenerative responses
 
-Cell-state transitions rather than creating new cell types
+- Cell-state transitions rather than creating new cell types
 
 Thus, infection correlates with changes in epithelial state composition, not simply cell presence or absence.
 
@@ -150,27 +151,27 @@ No.
 
 ACE2 expression is:
 
-Extremely low
+- Extremely low
 
-Diffuse across clusters
+- Diffuse across clusters
 
-Not visually enriched at 3 dpi
+- Not visually enriched at 3 dpi
 
 Therefore, ACE2 transcript abundance is not a reliable proxy for infection rate in this scRNA-seq dataset.
 
 4. What is the difference between ENO2 and ACE2 as biomarkers?
 
-ACE2: Viral entry receptor; indicates susceptibility but poorly detected here.
+- ACE2: Viral entry receptor; indicates susceptibility but poorly detected here.
 
-ENO2: Cell-identity marker highlighting a small neuroendocrine-like population.
+- ENO2: Cell-identity marker highlighting a small neuroendocrine-like population.
 
 ENO2 shows localized expression, whereas ACE2 does not define clusters.
 
 5. Which cluster has the highest ACE2 expression at 3 dpi and what does it mean biologically?
 
-Leiden cluster 5 has the highest mean ACE2 expression at 3 dpi.
+- Leiden cluster 5 has the highest mean ACE2 expression at 3 dpi.
 
-However, expression levels are very low (<10% positive cells).
+- However, expression levels are very low (<10% positive cells).
 
 Interpretation:
 ACE2 expression is biologically weak and does not define infected populations. Infection dynamics are better explained by cellular responses and differentiation trajectories.
