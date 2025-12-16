@@ -1,4 +1,4 @@
-Project 1: SARS-CoV-2 Infection Dynamics in Human Bronchial Epithelial Cells
+****Project 1: SARS-CoV-2 Infection Dynamics in Human Bronchial Epithelial Cells****
 📌 Overview
 
 This repository contains a single-cell RNA-sequencing (scRNA-seq) analysis pipeline reproducing key results from:
@@ -13,21 +13,21 @@ The analysis investigates cell-type composition, infection dynamics, and differe
 📊 Data Description
 Source
 
-GEO accession: GSE166766
+- GEO accession: GSE166766
 
-Link: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE166766
+- Link: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE166766
 
 Experimental Design
 
 Human bronchial epithelial cells cultured at air–liquid interface were infected with SARS-CoV-2 and profiled using scRNA-seq at:
 
-Mock (uninfected)
+- Mock (uninfected)
 
-1 day post-infection (1 dpi)
+- 1 day post-infection (1 dpi)
 
-2 days post-infection (2 dpi)
+- 2 days post-infection (2 dpi)
 
-3 days post-infection (3 dpi)
+- 3 days post-infection (3 dpi)
 
 Each sample is provided as a 10x Genomics matrix (matrix.mtx, barcodes.tsv, features.tsv).
 
@@ -37,9 +37,9 @@ The full pipeline is implemented in a single Jupyter Notebook (.ipynb) using Sca
 
 1. Data Acquisition
 
-Downloaded raw 10x matrices from GEO
+- Downloaded raw 10x matrices from GEO
 
-Organized files per sample (mock, 1 dpi, 2 dpi, 3 dpi)
+- Organized files per sample (mock, 1 dpi, 2 dpi, 3 dpi)
 
 2. Quality Control & Preprocessing
 
